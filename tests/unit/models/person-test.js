@@ -3,9 +3,9 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('mitarbeiter', 'Mitarbeiter', {
+moduleForModel('person', 'Person', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:week', 'model:type']
 });
 
 test('it exists', function() {

@@ -5,7 +5,7 @@ import {
 
 moduleForModel('type', 'Type', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:person', 'model:week']
 });
 
 test('it exists', function() {

@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <label>Vorname</label>
+        {{input type="text" value=name}}
+    </div>
+    <div>
+        <label>Nachname</label>
+        {{input type="text" value=lastname}}
+    </div>
+    <div>
+        <label>E-Mail</label>
+        {{input type="text" value=mail}}
+    </div>
+    <div>
+        <label>Telefon</label>
+        {{input type="text" value=phone}}
+    </div>
+    <div>
+        <label>Handy</label>
+        {{input type="text" value=handy}}
+    </div>
+
+
+    {{#each type in types}}
+        <button {{action 'setType' type}}>{{type.value}}{{type.clicked}}</button>
+    {{/each}}
+    {{#each type in clickedTypes}}
+    <button {{action 'unsetType' type}}>{{type.value}}{{type.clicked}}</button>
+    {{/each}}
+
+    <button {{action 'savePerson'}}>Neu Anlegen</button>
+
+</div>

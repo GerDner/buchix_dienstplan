@@ -28,4 +28,19 @@ export default Ember.ArrayController.extend({
     * @type {String}
     */
     year: Ember.computed.alias('controllers.session.year'),
+
+    /**
+     * next kw computed property
+     */
+    nextKw: function(){
+        return this.get('kw') + 1;
+    }.property('kw'),
+
+    /**
+    * prev kw computed property
+    */
+    prevKw: function(){
+        return this.get('kw') - 1;
+    }.property('kw')
+
 });

@@ -4,6 +4,7 @@ var type =  DS.Model.extend({
   value: DS.attr('string'),
   class: DS.attr('string'),
   person: DS.hasMany('person'),
+  clicked: DS.attr('boolean')
 });
 
 type.reopenClass({

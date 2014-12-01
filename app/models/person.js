@@ -23,10 +23,10 @@ var person = DS.Model.extend({
 
 person.reopenClass({
     FIXTURES: [
-    { id: 1,lastname: 'Mustermann', name: 'Max', phone: '07243 65687' , weeks: [1,2]},
-    { id: 2,lastname: 'Mustermann', name: 'Ralf', phone: '07243 65687', weeks: [3,4]},
-    { id: 3,lastname: 'Mustermann', name: 'Lukas', phone: '07243 65687', weeks: [5,6]},
-    { id: 4,lastname: 'Mustermann', name: 'Jonas', phone: '07243 65687', weeks: [8]}
+    { id: 1,lastname: 'Bucher', name: 'Max', phone: '07243 65687' , weeks: [1,2]},
+    { id: 2,lastname: 'Anders', name: 'Ralf', phone: '07243 65687', weeks: [3,4]},
+    { id: 3,lastname: 'Affe', name: 'Lukas', phone: '07243 65687', weeks: [5,6]},
+    { id: 4,lastname: 'Zimmermann', name: 'Jonas', phone: '07243 65687', weeks: [8]}
     ]
 });
 

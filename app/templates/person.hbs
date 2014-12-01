@@ -20,14 +20,16 @@
         {{input type="text" value=handy}}
     </div>
 
+    <div>
+        {{#each type in clickedTypes}}
+            <button class="btn btn-primary" {{action 'unsetType' type}}>{{type.value}}</button class="btn btn-default">
+        {{/each}}
+        {{#each type in types}}
+            <button class="btn btn-default" {{action 'setType' type}} >{{type.value}}</button class="btn btn-default">
+        {{/each}}
 
-    {{#each type in types}}
-        <button {{action 'setType' type}}>{{type.value}}{{type.clicked}}</button>
-    {{/each}}
-    {{#each type in clickedTypes}}
-    <button {{action 'unsetType' type}}>{{type.value}}{{type.clicked}}</button>
-    {{/each}}
+    </div>
 
-    <button {{action 'savePerson'}}>Neu Anlegen</button>
+    <button class="btn btn-default" {{action 'savePerson'}}>Neu Anlegen</button class="btn btn-default">
 
 </div>

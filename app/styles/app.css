@@ -1,3 +1,20 @@
 html, body {
   margin: 20px;
 }
+.field {
+    width:35px;
+    -webkit-box-shadow: none!important;
+    box-shadow: none !important;
+    text-align:center;
+}
+tr.active td {
+    background:#ccc!important;
+}
+td input {
+    background: transparent;
+}
+.centered {
+    display:table;
+    margin: 0 auto 0;
+    font-size:20px;
+}

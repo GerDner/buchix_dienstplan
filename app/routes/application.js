@@ -1,6 +1,6 @@
 import Ember from 'ember';
-
-export default Ember.Route.extend({
+import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+export default Ember.Route.extend(ApplicationRouteMixin,{
     queryParams: {
         kw: {
             refreshModel: true
@@ -13,8 +13,6 @@ export default Ember.Route.extend({
         var persons = this.store.find('person');
         var self = this;
         return Ember.run(function(){
-            console.log('frefresch');
-
             persons.then(function(persons){
                 persons.filter(function(item){
                     var week = item.get('currentWeek');
@@ -34,5 +32,9 @@ export default Ember.Route.extend({
             return persons;
         });
 
+    },
+    setupController: function(controller, model){
+        controller.set('model', model);
+        this._super(controller, model);
     }
 });

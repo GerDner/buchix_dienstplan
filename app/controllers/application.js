@@ -2,6 +2,20 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
     /**
+     * Sort property
+     *
+     * @type {Array}
+     */
+    sortProperties: ['name'],
+
+    /**
+     * sort descending
+     *
+     * @type {Boolean}
+     */
+    sortAscending: false,
+
+    /**
      * Url query params
      *
      * @type {Array}
@@ -29,6 +43,83 @@ export default Ember.ArrayController.extend({
     */
     year: Ember.computed.alias('controllers.session.year'),
 
+    mo: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(1).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    di: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(2).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    mi: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(3).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    do: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(4).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    fr: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(5).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    sa: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(6).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    so: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(7).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
+    top: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Kopfbereich');
+            });
+            return accept;
+        });
+    }.property('model', 'kw' ,'year'),
+
+    service: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Service');
+            });
+            return accept;
+        });
+    }.property('model', 'kw' ,'year'),
+
+    theke: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Theke');
+            });
+            return accept;
+        });
+    }.property('model', 'kw' ,'year'),
+
+    cold: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Kalte Küche');
+            });
+            return accept;
+        });
+    }.property('model', 'kw' ,'year'),
+
+    warm: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Warme Küche');
+            });
+            return accept;
+        });
+    }.property('model', 'kw' ,'year'),
     /**
      * next kw computed property
      */
@@ -41,6 +132,11 @@ export default Ember.ArrayController.extend({
     */
     prevKw: function(){
         return this.get('kw') - 1;
-    }.property('kw')
+    }.property('kw'),
 
+    actions: {
+        login:function(){
+            this.get('session').authenticate('authenticator:main', {});
+        }
+    }
 });

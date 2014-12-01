@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
      *
      * @type {Number}
      */
-    kw:48,
+    kw:49,
     /**
      *current year
      *

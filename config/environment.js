@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'buchix',
+    contentSecurityPolicy: 'Disabled-Content-Security-Policy' ,
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

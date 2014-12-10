@@ -79,7 +79,7 @@ export default Ember.ArrayController.extend({
             });
             return accept;
         });
-    }.property('model', 'kw' ,'year'),
+    }.property('model.@each.weeks', 'kw' ,'year'),
 
     service: function(){
         return this.filter(function(item){
@@ -89,7 +89,7 @@ export default Ember.ArrayController.extend({
             });
             return accept;
         });
-    }.property('model', 'kw' ,'year'),
+    }.property('model.@each.weeks', 'kw' ,'year'),
 
     theke: function(){
         return this.filter(function(item){
@@ -99,7 +99,7 @@ export default Ember.ArrayController.extend({
             });
             return accept;
         });
-    }.property('model', 'kw' ,'year'),
+    }.property('model.@each.weeks', 'kw' ,'year'),
 
     cold: function(){
         return this.filter(function(item){
@@ -109,34 +109,74 @@ export default Ember.ArrayController.extend({
             });
             return accept;
         });
-    }.property('model', 'kw' ,'year'),
+    }.property('model.@each.weeks', 'kw' ,'year'),
 
     warm: function(){
         return this.filter(function(item){
             var accept = false;
             item.get('type').forEach(function(type){
-                accept = (type.get('value') === 'Warme Küche');
+                accept = (type.get('value') === 'Küche Fest');
             });
             return accept;
         });
-    }.property('model', 'kw' ,'year'),
+    }.property('model.@each.weeks', 'kw' ,'year'),
     /**
      * next kw computed property
      */
     nextKw: function(){
-        return this.get('kw') + 1;
+        if (this.get('kw') === 52) {
+            this.set('nextYear', this.get('year')+1);
+            return 1
+        } else {
+            return this.get('kw') + 1;
+        }
     }.property('kw'),
 
     /**
     * prev kw computed property
     */
     prevKw: function(){
-        return this.get('kw') - 1;
+        if (this.get('kw') === 1) {
+            this.set('prevYear', this.get('year')-1);
+            return 52;
+        } else {
+            return this.get('kw') - 1;
+        }
     }.property('kw'),
+
+    /**
+    * next kw computed property
+    */
+    nextYear: function(){
+        return this.get('year');
+    }.property('year'),
+
+    /**
+    * prev kw computed property
+    */
+    prevYear: function(){
+        return this.get('year');
+    }.property('year'),
 
     actions: {
         login:function(){
             this.get('session').authenticate('authenticator:main', {});
+        },
+        delete:function(person){
+            person.destroyRecord();
+        },
+        autoSave:function(info){
+            var weeks = this.get('store').all('week');
+            console.log(weeks);
+            weeks.forEach(function(item){
+                console.log(item.get('isDirty'));
+                if(item.get('isDirty')) {
+                    item.save();
+                }
+            })
+        },
+        save:function(week){
+            week.save();
         }
     }
 });

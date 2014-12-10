@@ -13,7 +13,6 @@
     "notEqual",
     "notStrictEqual",
     "test",
-    "asyncTest",
     "testBoth",
     "testWithDefault",
     "raises",

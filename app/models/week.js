@@ -10,8 +10,7 @@ var week = DS.Model.extend({
   fr: DS.attr('string',{defaultValue:"-"}),
   sa: DS.attr('string',{defaultValue:"-"}),
   so: DS.attr('string',{defaultValue:"-"}),
-  type: DS.attr('string',{defaultValue:"plan"}),
-  person:  DS.belongsTo('person')
+  person:  DS.hasMany('person',{inverse: 'weeks',async:true})
 });
 
 

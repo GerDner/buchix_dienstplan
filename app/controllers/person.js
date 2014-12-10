@@ -33,6 +33,9 @@ export default Ember.ObjectController.extend({
             this.get('model').get('type').removeRecord(type);
             type.set('clicked', false);
             this.set('typeChanged',this.get('typeChanged'+'l'));
+        },
+        savePerson:function(person){
+            person.save();
         }
     }
 

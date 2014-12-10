@@ -6,13 +6,15 @@ var person = DS.Model.extend({
   phone: DS.attr('string'),
   handy: DS.attr('string'),
   mail: DS.attr('string'),
-  weeks: DS.hasMany('week'),
-  type: DS.hasMany('type'),
-  tempWeeks: function(){
-      return this.get('weeks').filterBy('kw', this.get('kw'));
-  }.property('weeks','kw', 'year'),
+  weeks: DS.hasMany('week',{inverse: 'person',async:true}),
+  type: DS.hasMany('type',{async:true}),
+
   currentWeek: function(){
-      return this.get('tempWeeks').filterBy('year', this.get('year'));
+      var self = this;
+      return this.get('weeks').filter(function(week) {
+          return week.get('kw') === self.get('kw') &&
+          week.get('year') === self.get('year');
+      });
   }.property('tempWeeks','kw', 'year'),
   kw: Ember.computed.alias('session.kw'),
   year: Ember.computed.alias('session.year'),

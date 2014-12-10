@@ -3,10 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
     setupController: function(controller) {
-        var people = this.get('store').createRecord('person', {
+        var person = this.get('store').createRecord('person', {
             name: ""
         });
-        controller.set('model', people);
+        controller.set('model', person);
     }
 
 });

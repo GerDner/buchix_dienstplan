@@ -9,9 +9,16 @@ export default Base.extend({
         });
     },
     authenticate: function(options) {
-        return new Ember.RSVP.Promise(function(resolve, reject) {
-            resolve(options);
-        });
+        if (options.name ==='ralf' && options.password === 'sebastian') {
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                resolve(options);
+            });
+        } else {
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                reject(options);
+            });
+        }
+
     },
     invalidate: function(data) {
         return new Ember.RSVP.Promise(function(resolve, reject) {

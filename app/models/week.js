@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 var week = DS.Model.extend({
+    __v: DS.attr('string'),
   kw: DS.attr('number'),
   year: DS.attr('number'),
   mo: DS.attr('string',{defaultValue:"-"}),
@@ -10,7 +11,7 @@ var week = DS.Model.extend({
   fr: DS.attr('string',{defaultValue:"-"}),
   sa: DS.attr('string',{defaultValue:"-"}),
   so: DS.attr('string',{defaultValue:"-"}),
-  person:  DS.hasMany('person',{inverse: 'weeks',async:true})
+  person:  DS.belongsTo('person', {async:true})
 });
 
 

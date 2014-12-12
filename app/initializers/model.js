@@ -6,6 +6,6 @@ export default {
     name: 'model',
     after: "model",
     initialize: function(container, application) {
-        application.inject('model', 'session', 'controller:session');
+        application.inject('model', 'application', 'controller:application');
     }
 };

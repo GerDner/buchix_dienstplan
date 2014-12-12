@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 var type =  DS.Model.extend({
+    __v: DS.attr('string'),
   value: DS.attr('string'),
   class: DS.attr('string'),
   person: DS.hasMany('person'),

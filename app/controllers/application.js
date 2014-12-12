@@ -96,7 +96,7 @@ export default Ember.ArrayController.extend({
         return this.filter(function(item){
             var accept = false;
             item.get('type').forEach(function(type){
-                accept = (type.get('value') === 'Kopfbereich');
+                accept = (type.get('value') === 'Top');
             });
             return accept;
         });

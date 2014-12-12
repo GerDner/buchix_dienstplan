@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+    typeahead: {data:['test']},
     saved: '',
     isLoading:false,
     /**
@@ -59,6 +60,10 @@ export default Ember.ArrayController.extend({
         return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(1).format('DD.MM');
     }.property('kw', 'year'),
 
+    fullMo: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(1).format('DD.MM.YYYY');
+    }.property('kw', 'year'),
+
     di: function() {
         return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(2).format('DD.MM');
     }.property('kw', 'year'),
@@ -81,6 +86,10 @@ export default Ember.ArrayController.extend({
 
     so: function() {
         return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(7).format('DD.MM');
+    }.property('kw', 'year'),
+
+    fullSo: function() {
+        return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(7).format('DD.MM.YYYY');
     }.property('kw', 'year'),
 
     top: function(){
@@ -128,6 +137,16 @@ export default Ember.ArrayController.extend({
             var accept = false;
             item.get('type').forEach(function(type){
                 accept = (type.get('value') === 'Küche Fest');
+            });
+            return accept;
+        });
+    }.property('model.@each.weeks', 'kw' ,'year'),
+
+    brauerei: function(){
+        return this.filter(function(item){
+            var accept = false;
+            item.get('type').forEach(function(type){
+                accept = (type.get('value') === 'Brauerei');
             });
             return accept;
         });

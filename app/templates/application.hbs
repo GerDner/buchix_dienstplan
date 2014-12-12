@@ -45,13 +45,13 @@
         </div>
 
 
-    
+
 
     </div>
 </div>
 {{outlet}}
 <div class="row">
-    <div class="centered"><span class="label label-default">Woche: {{kw}} | {{mo}} -> {{so}}</span></div>
+    <div class="centered"><span class="label label-default">Woche: {{kw}} | {{fullMO}} -> {{so}}</span></div>
 </div>
 {{#link-to 'index' (query-params kw=prevKw year=prevYear)}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
 {{#link-to 'index' (query-params kw=nextKw year=nextYear) class="pull-right"}}<button class="btn btn-default">nächste Woche</button>{{/link-to}}
@@ -125,8 +125,6 @@
             <tr>
                 <td><button class="btn btn-xs btn-default" {{action "delete" this}}><span class="glyphicon glyphicon-remove"></span></button>
 
-
-
                     <span {{action 'editPerson' this}} class="pointer">{{lastname}}, {{name}}</span>
                 </td>
                 <td>{{input class="field" focus-out="autoSave" value=currentWeek.mo}}</td>
@@ -142,7 +140,23 @@
             {{#each cold}}
             <tr>
                 <td><button class="btn btn-xs btn-default" {{action "delete" this}}><span class="glyphicon glyphicon-remove"></span></button>
-                    <button class="btn btn-xs btn-default" {{action "delete" this}}><span class="glyphicon glyphicon-remove"></span></button>
+
+                    <span {{action 'editPerson' this}} class="pointer">{{lastname}}, {{name}}</span>
+                </td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.mo}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.di}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.mi}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.do}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.fr}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.sa}}</td>
+                <td>{{input class="field" focus-out="autoSave" value=currentWeek.so}}</td>
+            </tr>
+            {{/each}}
+            {{#if brauerei}}<tr class="active"><td>Brauerei</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>{{/if}}
+            {{#each brauerei}}
+            <tr>
+                <td><button class="btn btn-xs btn-default" {{action "delete" this}}><span class="glyphicon glyphicon-remove"></span></button>
+
                     <span {{action 'editPerson' this}} class="pointer">{{lastname}}, {{name}}</span>
                 </td>
                 <td>{{input class="field" focus-out="autoSave" value=currentWeek.mo}}</td>
@@ -217,6 +231,19 @@
             {{/each}}
             {{#if cold}}<tr class="active"><td>Küche Aushilfe</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>{{/if}}
             {{#each cold}}
+            <tr>
+                <td>{{lastname}}, {{name}}</td>
+                <td>{{currentWeek.mo}}</td>
+                <td>{{currentWeek.di}}</td>
+                <td>{{currentWeek.mi}}</td>
+                <td>{{currentWeek.do}}</td>
+                <td>{{currentWeek.fr}}</td>
+                <td>{{currentWeek.sa}}</td>
+                <td>{{currentWeek.so}}</td>
+            </tr>
+            {{/each}}
+            {{#if brauerei}}<tr class="active"><td>Küche Aushilfe</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>{{/if}}
+            {{#each cobrauereild}}
             <tr>
                 <td>{{lastname}}, {{name}}</td>
                 <td>{{currentWeek.mo}}</td>

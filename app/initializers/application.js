@@ -7,7 +7,7 @@ export default {
   after: "store",
   initialize: function(container) {
       var store = container.lookup('store:main');
-
+      store.find('person');
       store.find('week');
       store.find('type');
 

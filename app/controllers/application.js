@@ -19,7 +19,7 @@ export default Ember.ArrayController.extend({
      *
      * @type {Array}
      */
-    sortProperties: ['name'],
+    sortProperties: ['lastname'],
 
     /**
      * sort descending

@@ -126,7 +126,7 @@ export default Ember.ArrayController.extend({
         return this.filter(function(item){
             var accept = false;
             item.get('type').forEach(function(type){
-                accept = (type.get('value') === 'Kalte Küche');
+                accept = (type.get('value') === 'Küche Aushilfe');
             });
             return accept;
         });

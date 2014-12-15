@@ -26,7 +26,7 @@ export default Ember.ArrayController.extend({
      *
      * @type {Boolean}
      */
-    sortAscending: false,
+    sortAscending: true,
 
     /**
      * Url query params

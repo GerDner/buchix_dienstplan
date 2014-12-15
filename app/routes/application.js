@@ -10,12 +10,12 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
         }
     },
     model: function() {
-        var persons = this.store.find('person');
+        var persons = this.store.all('person');
         var applicationController = this.controllerFor('application')
         var self = this;
-        persons.then(function(persons){
+
                 persons.filter(function(item, index, enumerable){
-                    if ( item.get('currentWeek') === undefined ) {
+                    if ( item.get('currentWeek') === undefined && applicationController.get('kw') !== 0 && applicationController.get('year') !== 0) {
                         var newWeek = self.store.createRecord('week', {
                             kw: applicationController.get('kw'),
                             year: applicationController.get('year')
@@ -27,8 +27,8 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
                         });
                     }
                 })
-            });
-        return this.store.find('person');
+
+        return this.store.all('person');
 
 
     },

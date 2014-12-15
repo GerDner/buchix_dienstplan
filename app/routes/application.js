@@ -10,7 +10,7 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
         }
     },
     model: function() {
-        var persons = this.store.all('person');
+        var persons = this.store.find('person');
         var applicationController = this.controllerFor('application')
         var self = this;
         persons.then(function(persons){

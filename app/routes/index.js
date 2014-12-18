@@ -18,7 +18,7 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
         persons.then(function(persons){
             persons.forEach(function(person){
                 console.log(person.get('currentWeek'))
-                if (person.get('currentWeek') == undefined) {
+                if (person.get('currentWeek') === undefined) {
                     console.log('kickstarting new week')
                     var newWeek = self.store.createRecord('week', {
                         kw: kw,

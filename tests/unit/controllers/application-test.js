@@ -5,7 +5,6 @@ import {
 
 moduleFor('controller:application', 'ApplicationController', {
   // Specify the other units that are required for this test.
-  needs: [ 'controller:session' ] 
 });
 
 // Replace this with your real tests.

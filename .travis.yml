@@ -13,6 +13,6 @@ install:
   - bower install
 
 script:
+  - mkdir config
+  - wget -O config/environment.js https://gist.githubusercontent.com/GerDner/537cdc4f0fb404205a29/raw/8008dd8dd2431945ef89f2d3e8043ff3a1b22c70/config.js 
   - npm test
-
-

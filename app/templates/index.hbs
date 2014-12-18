@@ -1,0 +1,76 @@
+
+<div class="row">
+    <div class="centered"><span class="label label-default">Woche: {{kw}} | {{fullMo}} -> {{fullSo}}</span></div>
+</div>
+{{#link-to 'index' (query-params kw=prevKw year=prevYear)}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
+{{#link-to 'index' (query-params kw=nextKw year=nextYear) class="pull-right"}}<button class="btn btn-default">nächste Woche</button>{{/link-to}}
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Mo {{mo}}</td>
+            <td>Di {{di}}</td>
+            <td>Mi {{mi}}</td>
+            <td>Do {{do}}</td>
+            <td>Fr {{fr}}</td>
+            <td>Sa {{sa}}</td>
+            <td>So {{so}}</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if session.isAuthenticated}}
+        {{#each type in controller}}
+        <tr class="active"><td>{{type.value}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        {{#each person in type.person}}
+        <tr>
+            <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
+                <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}},{{person.kw}}</span>
+            </td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.mo}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.di}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.mi}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.do}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.fr}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.sa}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.so}}</td>
+        </tr>
+        {{/each}}
+        {{/each}}
+
+        {{else}}
+
+
+
+
+
+
+
+
+
+        {{#each type in controller}}
+        <tr class="active"><td>{{type.value}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        {{#each person in type.person}}
+        <tr>
+            <td>
+                <span  class="pointer">{{person.lastname}}, {{person.name}}</span>
+            </td>
+            <td>{{person.currentWeek.mo}}</td>
+            <td>{{person.currentWeek.di}}</td>
+            <td>{{person.currentWeek.mi}}</td>
+            <td>{{person.currentWeek.do}}</td>
+            <td>{{person.currentWeek.fr}}</td>
+            <td>{{person.currentWeek.sa}}</td>
+            <td>{{person.currentWeek.so}}</td>
+        </tr>
+        {{/each}}
+        {{/each}}
+        {{/if}}
+    </tbody>
+</table>
+
+
+
+{{#link-to 'index' (query-params kw=prevKw year=prevYear)}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
+{{#link-to 'index' (query-params kw=nextKw year=nextYear) class="pull-right"}}<button class="btn btn-default">nächste Woche</button>{{/link-to}}

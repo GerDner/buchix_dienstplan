@@ -7,7 +7,7 @@ export default Ember.ObjectController.extend({
     *
     * @type {Array}
     */
-    needs: ['session'],
+    needs: ['application'],
 
     actions: {
         savePerson:function(person){

@@ -5,11 +5,11 @@ export function initialize(/* container, application */) {
 export default {
   name: 'application',
   after: "store",
-  initialize: function(container) {
+  initialize: function(container, application) {
       var store = container.lookup('store:main');
       store.find('person');
       store.find('week');
       store.find('type');
-
+     
   }
 };

@@ -7,7 +7,7 @@ export default Ember.ObjectController.extend({
     *
     * @type {Array}
     */
-    needs: ['session'],
+    needs: ['application'],
 
     types: function(){
         return this.get('store').filter('Type', { clicked: false }, function(value) {
@@ -25,17 +25,26 @@ export default Ember.ObjectController.extend({
 
     actions: {
         setType: function(type) {
-            this.get('model').get('type').pushObject(type);
             type.set('clicked', true);
             this.set('typeChanged',this.get('typeChanged'+'l'));
         },
         unsetType: function(type) {
-            this.get('model').get('type').removeRecord(type);
             type.set('clicked', false);
             this.set('typeChanged',this.get('typeChanged'+'l'));
         },
         savePerson:function(person){
-            person.save();
+            var self = this;
+            this.get('clickedTypes').then(function(types){
+                types.forEach(function(type){
+                    person.get('type').pushObject(type);
+                })
+                person.save().then(function(){
+                    person.get('type').then(function(types){
+                        types.save();
+                        self.transitionTo('index')
+                    })
+                });
+            })
         }
     }
 

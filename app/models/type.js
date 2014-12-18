@@ -1,11 +1,11 @@
 import DS from 'ember-data';
 
 var type =  DS.Model.extend({
-    __v: DS.attr('string'),
+    __v: DS.attr('string',{serialize: false}),
   value: DS.attr('string'),
-  class: DS.attr('string'),
+  class: DS.attr('string',{serialize: false}),
   person: DS.hasMany('person'),
-  clicked: DS.attr('boolean', {defaultValue:false})
+  clicked: DS.attr('boolean', {defaultValue:false,serialize: false})
 });
 
 type.reopenClass({

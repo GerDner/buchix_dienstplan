@@ -25,8 +25,8 @@ export default Ember.ObjectController.extend({
             console.log(filter.toString())
             var foundone = false;
             filter.forEach(function(week) {
-                console.log('filter auf: '+week.get('kw')+'/'+self.get('kw')+' '+ week.get('year') +'/'+ self.get('year')+ 'ist')
-                console.log(week.get('kw') == self.get('kw') && week.get('year') == self.get('year'))
+                //console.log('filter auf: '+week.get('kw')+'/'+self.get('kw')+' '+ week.get('year') +'/'+ self.get('year')+ 'ist')
+                //console.log(week.get('kw') == self.get('kw') && week.get('year') == self.get('year'))
                 if (week.get('kw') == self.get('kw') && week.get('year') == self.get('year')) {
                     self.set('cWeek',week);
                     foundone = true;

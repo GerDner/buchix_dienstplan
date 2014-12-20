@@ -28,9 +28,11 @@
         <tr>
             <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
                 <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}} {{person.currentWeek}}
-                    {{#if person.phone}}{{view 'tooltip' data-original-title=person.phone glyphicon="glyphicon glyphicon-earphone"}}{{/if}}
-                    {{#if person.handy}}{{view 'tooltip' data-original-title=person.handy glyphicon="glyphicon glyphicon-phone"}}{{/if}}
-                    {{#if person.mail}}{{view 'tooltip' data-original-title=person.mail glyphicon="glyphicon glyphicon-envelope"}}{{/if}}
+                    <span class="pull-right">
+                        {{#if person.phone}}{{view 'tooltip' data-original-title=person.phone glyphicon="glyphicon glyphicon-earphone"}}{{/if}}
+                        {{#if person.handy}}{{view 'tooltip' data-original-title=person.handy glyphicon="glyphicon glyphicon-phone"}}{{/if}}
+                        {{#if person.mail}}{{view 'tooltip' data-original-title=person.mail glyphicon="glyphicon glyphicon-envelope"}}{{/if}}
+                    </span>
                 </span>
             </td>
             <td>{{input class="field" focus-out="autoSave" value=person.cWeek.mo}}</td>

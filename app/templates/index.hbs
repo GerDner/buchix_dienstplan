@@ -10,13 +10,13 @@
     <thead>
         <tr>
             <td>Name</td>
-            <td>Mo {{mo}}</td>
-            <td>Di {{di}}</td>
-            <td>Mi {{mi}}</td>
-            <td>Do {{do}}</td>
-            <td>Fr {{fr}}</td>
-            <td>Sa {{sa}}</td>
-            <td>So {{so}}</td>
+            <td class="text-center">Mo {{mo}}</td>
+            <td class="text-center">Di {{di}}</td>
+            <td class="text-center">Mi {{mi}}</td>
+            <td class="text-center">Do {{do}}</td>
+            <td class="text-center">Fr {{fr}}</td>
+            <td class="text-center">Sa {{sa}}</td>
+            <td class="text-center">So {{so}}</td>
         </tr>
     </thead>
     <tbody>
@@ -28,20 +28,20 @@
         <tr>
             <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
                 <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}} {{person.currentWeek}}
-                    <span class="pull-right icons">
+
                         {{#if person.phone}}{{view 'tooltip' data-original-title=person.phone glyphicon="glyphicon glyphicon-earphone"}}{{/if}}
                         {{#if person.handy}}{{view 'tooltip' data-original-title=person.handy glyphicon="glyphicon glyphicon-phone"}}{{/if}}
                         {{#if person.mail}}{{view 'tooltip' data-original-title=person.mail glyphicon="glyphicon glyphicon-envelope"}}{{/if}}
-                    </span>
+                    <div class="clearFix"></div>
                 </span>
             </td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.mo}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.di}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.mi}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.do}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.fr}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.sa}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.so}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.mo}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.di}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.mi}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.do}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.fr}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.sa}}</td>
+            <td class="text-center">{{input class="field" focus-out="autoSave" value=person.cWeek.so}}</td>
         </tr>
         {{/each}}
         {{/each}}
@@ -67,13 +67,13 @@
                     {{#if person.mail}}{{view 'tooltip' data-original-title=person.mail glyphicon="glyphicon glyphicon-envelope"}}{{/if}}
                 </span>
             </td>
-            <td>{{person.cWeek.mo}}</td>
-            <td>{{person.cWeek.di}}</td>
-            <td>{{person.cWeek.mi}}</td>
-            <td>{{person.cWeek.do}}</td>
-            <td>{{person.cWeek.fr}}</td>
-            <td>{{person.cWeek.sa}}</td>
-            <td>{{person.cWeek.so}}</td>
+            <td class="text-center">{{person.cWeek.mo}}</td>
+            <td class="text-center">{{person.cWeek.di}}</td>
+            <td class="text-center">{{person.cWeek.mi}}</td>
+            <td class="text-center">{{person.cWeek.do}}</td>
+            <td class="text-center">{{person.cWeek.fr}}</td>
+            <td class="text-center">{{person.cWeek.sa}}</td>
+            <td class="text-center">{{person.cWeek.so}}</td>
         </tr>
         {{/each}}
         {{/each}}

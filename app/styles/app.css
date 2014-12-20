@@ -57,6 +57,9 @@ td input {
 .tooltips {
     margin-left:10px;
 }
+.tooltip {
+    white-space:nowrap;
+}
 @import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");/*!
 * bootswatch v3.3.1+2
 * Homepage: http://bootswatch.com

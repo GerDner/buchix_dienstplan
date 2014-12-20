@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+    
     saved: '',
     isLoading:false,
     /**

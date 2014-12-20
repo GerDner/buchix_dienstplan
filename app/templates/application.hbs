@@ -10,11 +10,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">BuchiX</a>
+        <a class="navbar-brand" href="#">Dienstplan</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
-            <li>{{#link-to 'application'}}Home{{/link-to}}</li>
+            <li>{{#link-to 'application' (query-params kw=currentKw year=currentYear)}}Heute{{/link-to}}</li>
             <li>{{#link-to 'person'}}Neu{{/link-to}}</li>
             {{#if controller.session.isAuthenticated}}
             <li  {{action 'invalidateSession'}}><a href="#">Logout</a></li>

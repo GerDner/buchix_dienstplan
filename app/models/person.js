@@ -16,22 +16,6 @@ var person = DS.Model.extend({
     async: true
   }),
 
-  currentWeek: function() {
-    var self = this;
-    var weeks = this.get('weeks').filter(function(week) {
-      return week.get('kw') === self.get('kw') && week.get('year') === self.get('year');
-    });
-    return weeks.objectAt(0);
-}.property('kw', 'year'),
-
-  kw: function() {
-    return parseInt(moment().format('W'))
-  }.property().volatile(),
-
-  year: function() {
-    return parseInt(moment().format('GGGG'))
-  }.property().volatile(),
-
   fullname: function() {
     return this.get('name') + ', ' + this.get('lastname');
   }.property('name', 'lastname')

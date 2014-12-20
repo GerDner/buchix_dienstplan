@@ -36,10 +36,6 @@ export default Ember.ArrayController.extend({
 
 
 
-    kw: null,
-
-    year: null,
-
     mo: function() {
         return moment(this.get('kw')+'-'+this.get('year'), "W-GGGG").day(1).format('DD.MM');
     }.property('kw', 'year'),
@@ -80,11 +76,11 @@ export default Ember.ArrayController.extend({
     * next kw computed property
     */
     nextKw: function(){
-        if (this.get('kw') === 52) {
-            this.set('nextYear', this.get('year')+1);
+        if (parseInt(this.get('kw')) === 52) {
+            this.set('nextYear', parseInt(this.get('year'))+1);
             return 1
         } else {
-            return this.get('kw') + 1;
+            return parseInt(this.get('kw')) + 1;
         }
     }.property('kw'),
 
@@ -92,11 +88,11 @@ export default Ember.ArrayController.extend({
     * prev kw computed property
     */
     prevKw: function(){
-        if (this.get('kw') === 1) {
-            this.set('prevYear', this.get('year')-1);
+        if (parseInt(this.get('kw')) === 1) {
+            this.set('prevYear', parseInt(this.get('year'))-1);
             return 52;
         } else {
-            return this.get('kw') - 1;
+            return parseInt(this.get('kw')) - 1;
         }
     }.property('kw'),
 
@@ -130,7 +126,33 @@ export default Ember.ArrayController.extend({
                     item.save();
                 }
             })
-            this.set('saved','gespeichert am ' + moment().format("DD.MM.YYYY") + ' um ' + moment().format("h:mm") )
+            var notification;
+            //this.set('saved',)
+            // Let's check if the user is okay to get some notification
+            if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                var notification = new Notification("gespeichert");
+                Ember.run.later( function() {
+                    notification.close()
+                }, 2000);
+            }
+
+            // Otherwise, we need to ask the user for permission
+            // Note, Chrome does not implement the permission static property
+            // So we have to check for NOT 'denied' instead of 'default'
+            else if (Notification.permission !== 'denied') {
+                Notification.requestPermission(function (permission) {
+                    // If the user is okay, let's create a notification
+                    if (permission === "granted") {
+                        var notification = new Notification("gespeichert");
+                        Ember.run.later( function() {
+                            notification.close()
+                        }, 2000);
+                    }
+                });
+            }
+
+
         },
         save:function(week){
             week.save();

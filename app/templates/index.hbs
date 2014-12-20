@@ -22,19 +22,20 @@
     <tbody>
         {{#if session.isAuthenticated}}
         {{#each type in controller}}
-        <tr class="active"><td>{{type.value}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        {{#each person in type.person}}
+        <tr class="active"><td>{{type.value}}{{type.test}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        {{#each person in type.person itemController="item"}}
+
         <tr>
             <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
-                <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}},{{person.kw}}</span>
+                <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}} {{person.currentWeek}}</span>
             </td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.mo}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.di}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.mi}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.do}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.fr}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.sa}}</td>
-            <td>{{input class="field" focus-out="autoSave" value=person.currentWeek.so}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.mo}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.di}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.mi}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.do}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.fr}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.sa}}</td>
+            <td>{{input class="field" focus-out="autoSave" value=person.cWeek.so}}</td>
         </tr>
         {{/each}}
         {{/each}}
@@ -51,18 +52,18 @@
 
         {{#each type in controller}}
         <tr class="active"><td>{{type.value}}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        {{#each person in type.person}}
+        {{#each person in type.person itemController="item"}}
         <tr>
             <td>
-                <span  class="pointer">{{person.lastname}}, {{person.name}}</span>
+                <span  class="pointer">{{person.lastname}}, {{person.name}}{{person.currentWeek}}</span>
             </td>
-            <td>{{person.currentWeek.mo}}</td>
-            <td>{{person.currentWeek.di}}</td>
-            <td>{{person.currentWeek.mi}}</td>
-            <td>{{person.currentWeek.do}}</td>
-            <td>{{person.currentWeek.fr}}</td>
-            <td>{{person.currentWeek.sa}}</td>
-            <td>{{person.currentWeek.so}}</td>
+            <td>{{person.cWeek.mo}}</td>
+            <td>{{person.cWeek.di}}</td>
+            <td>{{person.cWeek.mi}}</td>
+            <td>{{person.cWeek.do}}</td>
+            <td>{{person.cWeek.fr}}</td>
+            <td>{{person.cWeek.sa}}</td>
+            <td>{{person.cWeek.so}}</td>
         </tr>
         {{/each}}
         {{/each}}

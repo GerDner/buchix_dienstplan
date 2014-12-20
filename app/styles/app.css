@@ -51,6 +51,12 @@ td input {
     top: 200px;
     position: relative;
 }
+.icons {
+    width:200px;
+}
+.tooltips {
+    margin-left:10px;
+}
 @import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");/*!
 * bootswatch v3.3.1+2
 * Homepage: http://bootswatch.com

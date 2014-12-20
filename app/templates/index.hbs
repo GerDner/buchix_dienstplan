@@ -28,7 +28,7 @@
         <tr>
             <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
                 <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}} {{person.currentWeek}}
-                    <span class="pull-right">
+                    <span class="pull-right icons">
                         {{#if person.phone}}{{view 'tooltip' data-original-title=person.phone glyphicon="glyphicon glyphicon-earphone"}}{{/if}}
                         {{#if person.handy}}{{view 'tooltip' data-original-title=person.handy glyphicon="glyphicon glyphicon-phone"}}{{/if}}
                         {{#if person.mail}}{{view 'tooltip' data-original-title=person.mail glyphicon="glyphicon glyphicon-envelope"}}{{/if}}

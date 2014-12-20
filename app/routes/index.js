@@ -11,12 +11,18 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
     },
     model: function() {
         var self = this;
+        return this.store.find('type').then(function(types){
+            return Ember.RSVP.all(types.getEach('person')).then(function(person){
+                return Ember.RSVP.all(person.getEach('week')).then(function(){
+                    return types;
+                });
+            });
 
-        return this.store.all('type');
+        });
+
     },
     setupController: function(controller, model){
-        controller.set('year', parseInt(moment().format('GGGG')));
-        controller.set('kw', parseInt(moment().format('W')));
+        
         controller.set('model', model);
 
 

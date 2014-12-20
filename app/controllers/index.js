@@ -34,6 +34,14 @@ export default Ember.ArrayController.extend({
     */
     queryParams: ['kw', 'year'],
 
+    year: function(){
+        return parseInt(moment().format('GGGG'));
+
+    }.property(),
+    kw: function(){
+        return parseInt(moment().format('W'));
+    }.property(),
+
 
 
     mo: function() {

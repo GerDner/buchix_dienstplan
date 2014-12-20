@@ -4,7 +4,9 @@ var type =  DS.Model.extend({
     __v: DS.attr('string',{serialize: false}),
   value: DS.attr('string'),
   class: DS.attr('string',{serialize: false}),
-  person: DS.hasMany('person'),
+  person: DS.hasMany('person' ,{
+      async: true
+  }),
   clicked: DS.attr('boolean', {defaultValue:false,serialize: false})
 });
 

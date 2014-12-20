@@ -39,13 +39,18 @@ td input {
     to { transform: scale(1) rotate(360deg);}
 }
 .glyphicon-refresh {
-    color: white;
-    font-size: 30px;
+    color: #0c84e4;
+    font-size: 70px;
     position: relative;
     top: 27px;
     right: -44px;
 }
-
+.loader {
+    width: 100px;
+    margin: 0 auto 0;
+    top: 200px;
+    position: relative;
+}
 @import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");/*!
 * bootswatch v3.3.1+2
 * Homepage: http://bootswatch.com

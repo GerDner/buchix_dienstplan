@@ -2,7 +2,7 @@
 <div class="row">
     <div class="centered"><span class="label label-default">Woche: {{kw}} | {{fullMo}} -> {{fullSo}}</span></div>
 </div>
-{{#link-to 'index' (query-params kw=prevKw year=prevYear)}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
+{{#link-to 'index' (query-params kw=prevKw year=prevYear) class="pull-left"}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
 {{#link-to 'index' (query-params kw=nextKw year=nextYear) class="pull-right"}}<button class="btn btn-default">nächste Woche</button>{{/link-to}}
 
 
@@ -73,5 +73,5 @@
 
 
 
-{{#link-to 'index' (query-params kw=prevKw year=prevYear)}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
+{{#link-to 'index' (query-params kw=prevKw year=prevYear) class="pull-left"}}<button class="btn btn-default">letzte Woche</button>{{/link-to}}
 {{#link-to 'index' (query-params kw=nextKw year=nextYear) class="pull-right"}}<button class="btn btn-default">nächste Woche</button>{{/link-to}}

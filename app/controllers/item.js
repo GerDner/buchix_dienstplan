@@ -22,7 +22,7 @@ export default Ember.ObjectController.extend({
             var filter = Ember.ArrayProxy.createWithMixins({
                 content: loadedWeeks
             });
-            console.log(filter.toString())
+            //console.log(filter.toString())
             var foundone = false;
             filter.forEach(function(week) {
                 //console.log('filter auf: '+week.get('kw')+'/'+self.get('kw')+' '+ week.get('year') +'/'+ self.get('year')+ 'ist')

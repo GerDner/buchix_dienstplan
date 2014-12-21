@@ -3,10 +3,12 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 export default Ember.Route.extend(ApplicationRouteMixin,{
     queryParams: {
         kw: {
-            refreshModel: true
+            refreshModel: true,
+            replace: true
         },
         year: {
-            refreshModel: true
+            refreshModel: true,
+            replace: true
         }
     },
     model: function() {
@@ -22,7 +24,7 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
 
     },
     setupController: function(controller, model){
-        
+
         controller.set('model', model);
 
 

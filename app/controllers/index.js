@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-    
+
     saved: '',
     isLoading:false,
     /**
@@ -35,13 +35,7 @@ export default Ember.ArrayController.extend({
     */
     queryParams: ['kw', 'year'],
 
-    year: function(){
-        return parseInt(moment().format('GGGG'));
 
-    }.property(),
-    kw: function(){
-        return parseInt(moment().format('W'));
-    }.property(),
 
 
 
@@ -86,7 +80,7 @@ export default Ember.ArrayController.extend({
     */
     nextKw: function(){
         if (parseInt(this.get('kw')) === 52) {
-            this.set('nextYear', parseInt(this.get('year'))+1);
+            //this.set('nextYear', parseInt(this.get('year'))+1);
             return 1
         } else {
             return parseInt(this.get('kw')) + 1;
@@ -98,7 +92,7 @@ export default Ember.ArrayController.extend({
     */
     prevKw: function(){
         if (parseInt(this.get('kw')) === 1) {
-            this.set('prevYear', parseInt(this.get('year'))-1);
+            //this.set('prevYear', parseInt(this.get('year'))-1);
             return 52;
         } else {
             return parseInt(this.get('kw')) - 1;
@@ -109,15 +103,27 @@ export default Ember.ArrayController.extend({
     * next kw computed property
     */
     nextYear: function(){
-        return this.get('year');
-    }.property('year'),
+        console.log((parseInt(this.get('kw')) === 52))
+        console.log(parseInt(this.get('kw'))+'/'+52)
+        if (parseInt(this.get('kw')) === 52) {
+            return parseInt(this.get('year')) + 1;
+
+        } else {
+            return this.get('year');
+        }
+    }.property('year','kw'),
 
     /**
     * prev kw computed property
     */
     prevYear: function(){
-        return this.get('year');
-    }.property('year'),
+        if (parseInt(this.get('kw')) === 1) {
+            return parseInt(this.get('year')) - 1;
+
+        } else {
+            return this.get('year');
+        }
+    }.property('year','kw'),
 
     actions: {
         login:function(){

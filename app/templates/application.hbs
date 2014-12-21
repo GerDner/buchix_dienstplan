@@ -16,6 +16,7 @@
         <ul class="nav navbar-nav">
             <li>{{#link-to 'application' (query-params kw=currentKw year=currentYear)}}Heute{{/link-to}}</li>
             <li>{{#link-to 'person'}}Neu{{/link-to}}</li>
+            <li><a title="BuchiX" href="//buchix.lindenbräu.de">BuchiX</a></li>
             {{#if controller.session.isAuthenticated}}
             <li  {{action 'invalidateSession'}}><a href="#">Logout</a></li>
 

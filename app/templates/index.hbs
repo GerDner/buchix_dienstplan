@@ -26,7 +26,7 @@
         {{#each person in type.person itemController="item"}}
 
         <tr>
-            <td><button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>
+            <td><!--<button class="btn btn-xs btn-default" {{action "delete" person}}><span class="glyphicon glyphicon-remove"></span></button>-->
                 <span {{action 'editPerson' person}} class="pointer">{{person.lastname}}, {{person.name}} {{person.currentWeek}}
 
                         {{#if person.phone}}{{view 'tooltip' data-original-title=person.phone glyphicon="glyphicon glyphicon-earphone"}}{{/if}}

@@ -13,14 +13,14 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
     },
     model: function() {
         var self = this;
-        return this.store.find('type').then(function(types){
-            return Ember.RSVP.all(types.getEach('person')).then(function(person){
-                return Ember.RSVP.all(person.getEach('week')).then(function(){
-                    return types;
-                });
+        var types =  this.store.all('type')
+        return Ember.RSVP.all(types.getEach('person')).then(function(person){
+            return Ember.RSVP.all(person.getEach('week')).then(function(){
+                return types;
             });
-
         });
+
+
 
     },
     setupController: function(controller, model){

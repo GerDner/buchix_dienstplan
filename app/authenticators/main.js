@@ -13,6 +13,10 @@ export default Base.extend({
             return new Ember.RSVP.Promise(function(resolve, reject) {
                 resolve(options);
             });
+        } else if (options.name ==='bozic' && options.password === 'riesling'){
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                resolve(options);
+            });
         } else {
             return new Ember.RSVP.Promise(function(resolve, reject) {
                 reject(options);

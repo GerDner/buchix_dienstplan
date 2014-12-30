@@ -9,7 +9,7 @@ export default {
       var store = container.lookup('store:main');
 
       store.find('week');
-      store.find('person')
-      store.find('type')
+      
+
   }
 };

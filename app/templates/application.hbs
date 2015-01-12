@@ -10,30 +10,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Dienstplan</a>
+        <a title="BuchiX" class="navbar-brand" href="//buchix.lindenbräu.de">BuchiX</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
             <li>{{#link-to 'application' (query-params kw=currentKw year=currentYear)}}Heute{{/link-to}}</li>
-            <li>{{#link-to 'person'}}Neu{{/link-to}}</li>
-            <li><a title="BuchiX" href="//buchix.lindenbräu.de">BuchiX</a></li>
-            {{#if controller.session.isAuthenticated}}
-            <li  {{action 'invalidateSession'}}><a href="#">Logout</a></li>
-
-
-            {{/if}}
+            {{#if session.isAuthenticated}}<li>{{#link-to 'person'}}Neu{{/link-to}}</li>{{/if}}
+            <li></li>
         </ul>
-        {{#if controller.session.isAuthenticated}}
-        {{else}}
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                {{input value=controller.loginName class="form-control" placeholder="Login"}}
-                {{input value=controller.loginPassword class="form-control" placeholder="Passwort"}}
-            </div>
-            <button type="submit" class="btn btn-default" {{action 'login'}}>Login</button>
-        </form>
-        {{/if}}
-        <div class="pull-right">
+
+
+        <div class="pull-right login-status">
             {{#if controller.session.isAuthenticated}}
             <span class="label label-success">Logged In</span>
             {{else}}
@@ -43,6 +30,22 @@
             <span class="label label-success">{{controller.saved}}</span>
             {{/if}}
         </div>
+        {{#if controller.session.isAuthenticated}}
+        <ul class="nav navbar-nav pull-right">
+            <li  {{action 'invalidateSession'}}><a href="#">Logout</a></li>
+
+        </ul>
+        {{else}}
+
+        <form class="navbar-form navbar-left pull-right" role="search">
+            <div class="form-group">
+                {{input value=controller.loginName class="form-control" placeholder="Login"}}
+                {{input value=controller.loginPassword class="form-control" placeholder="Passwort"}}
+            </div>
+            <button type="submit" class="btn btn-default" {{action 'login'}}>Login</button>
+        </form>
+        {{/if}}
+
 
 
 

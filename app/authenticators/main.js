@@ -17,6 +17,10 @@ export default Base.extend({
             return new Ember.RSVP.Promise(function(resolve, reject) {
                 resolve(options);
             });
+        } else if (options.name ==='isabell' && options.password === 'wickie'){
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                resolve(options);
+            });
         } else {
             return new Ember.RSVP.Promise(function(resolve, reject) {
                 reject(options);
